@@ -3,9 +3,9 @@
 @chcp 65001 >nul
 title Meu Gerenciador
 setlocal enabledelayedexpansion
+cls
 
 :inicio
-cls
 echo ==============================================
 echo     NAVEGADOR DE PASTAS - MODO TERMINAL
 echo ==============================================
@@ -21,9 +21,9 @@ echo.
 set /p opt="Escolha uma opção: "
 
 if "%opt%"=="1" (
-dir /w
-pause
-goto inicio
+	dir /w
+	pause
+	goto inicio
 )
 
 if "%opt%"=="2" (
