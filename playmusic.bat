@@ -1,1 +1,0 @@
-start "" "C:\Users\BEBETY\Music\Playlists\work day.m3u8"

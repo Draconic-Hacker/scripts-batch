@@ -6,6 +6,7 @@ setlocal enabledelayedexpansion
 cls
 
 :inicio
+cls
 echo ==============================================
 echo     NAVEGADOR DE PASTAS - MODO TERMINAL
 echo ==============================================
