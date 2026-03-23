@@ -15,9 +15,9 @@ Invoke-WebRequest -Uri $url -OutFile $batFile
 # 3. Adiciona ao PATH do Usuário (se já não estiver lá)
 $oldPath = [Environment]::GetEnvironmentVariable("Path", "User")
 if ($oldPath -notlike "*$installDir*") {
-    Write-Host "Configurando variáveis de ambiente..." -ForegroundColor Yellow
+    Write-Host "Configurando variaveis de ambiente..." -ForegroundColor Yellow
     [Environment]::SetEnvironmentVariable("Path", "$oldPath;$installDir", "User")
-    Write-Host "Instalação concluída! Reinicie o terminal ou o Executar (Win+R)." -ForegroundColor Green
+    Write-Host "Instalacao concluida! Reinicie o terminal ou o Executar (Win+R)." -ForegroundColor Green
 } else {
     Write-Host "browser-files já está configurado no seu PATH!" -ForegroundColor Green
 }
