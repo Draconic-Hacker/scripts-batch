@@ -17,7 +17,9 @@ $oldPath = [Environment]::GetEnvironmentVariable("Path", "User")
 if ($oldPath -notlike "*$installDir*") {
     Write-Host "Configurando variaveis de ambiente..." -ForegroundColor Yellow
     [Environment]::SetEnvironmentVariable("Path", "$oldPath;$installDir", "User")
-    Write-Host "Instalacao concluida! Reinicie o terminal ou o Executar (Win+R)." -ForegroundColor Green
+    Write-Host "Instalacao concluida! Digite: browser-files pelo terminal ou pelo Executar (Win+R)." -ForegroundColor Green
+    pause ; exit
 } else {
     Write-Host "browser-files já está configurado no seu PATH!" -ForegroundColor Green
+    pause ; exit
 }

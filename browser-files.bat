@@ -17,6 +17,8 @@ echo [2] Ver estrutura em árvore (Tree)
 echo [3] Entrar em uma pasta
 echo [4] Voltar (CD ..)
 echo [5] Sair
+echo [6] Verificar Atualizacoes
+echo [7] Desinstalar
 echo.
 
 set /p opt="Escolha uma opção: "
@@ -50,6 +52,9 @@ if "%opt%"=="4" (
 )
 
 if "%opt%"=="5" exit
+
+if %opt%==6 powershell -ExecutionPolicy Bypass -File "%USERPROFILE%\browser-files\update.ps1"
+if %opt%==7 powershell -ExecutionPolicy Bypass -File "%USERPROFILE%\browser-files\uninstall.ps1"
 
 echo Opção inválida!
 timeout /t 2 >nul
