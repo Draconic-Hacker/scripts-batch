@@ -1,7 +1,7 @@
 # update.ps1
 $installDir = Join-Path $HOME "browser-files"
-$batFile = Join-Path $installDir "browser-files.bat"
-$url = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/browser-files.bat"
+$batFile = Join-Path $installDir "navegador.bat"
+$url = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/navegador.bat"
 
 Write-Host "Verificando atualizações para browser-files..." -ForegroundColor Cyan
 Invoke-WebRequest -Uri $url -OutFile $batFile -ErrorAction Stop
