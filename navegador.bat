@@ -6,6 +6,7 @@ setlocal enabledelayedexpansion
 cls
 
 :inicio
+color
 cls
 echo ==============================================
 echo     NAVEGADOR DE PASTAS - MODO TERMINAL
@@ -51,10 +52,27 @@ if "%opt%"=="4" (
 	goto inicio
 )
 
-if "%opt%"=="5" exit
+if "%opt%"=="5" (
+	exit
+)
 
-if %opt%==6 powershell -ExecutionPolicy Bypass -File "%USERPROFILE%\browser-files\update.ps1"
-if %opt%==7 powershell -ExecutionPolicy Bypass -File "%USERPROFILE%\browser-files\uninstall.ps1"
+if %opt%==6 ( 
+	color 0a
+	cls
+	echo ainda desenvolvendo essa funcionalidade
+	echo pressione qualquer tecla para voltar ao menu
+	pause >null
+	goto inicio
+)
+
+if %opt%==7 (
+	color 0a
+	cls
+	echo ainda desenvolvendo essa funcionalidade
+	echo pressione qualquer tecla para voltar ao menu
+	pause >null
+	goto inicio
+)
 
 echo Opção inválida!
 timeout /t 2 >nul
