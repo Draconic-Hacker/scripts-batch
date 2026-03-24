@@ -1,7 +1,14 @@
 # Define o local de instalação (Ex: C:\Users\SeuUsuario\browser-files)
 $installDir = Join-Path $HOME "browser-files"
+
 $batFile = Join-Path $installDir "browser-files.bat"
-$url = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/browser-files.bat"
+$updateFile = Join-Path $installDir "update.ps1"
+$uninstallFile = Join-Path $installDir "uninstall.ps1"
+
+
+$urlMain = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/browser-files.bat"
+$urlUpdate = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/update.ps1"
+$urlUninstall = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/uninstall.ps1"
 
 # 1. Cria a pasta se não existir
 if (!(Test-Path $installDir)) {
@@ -9,15 +16,21 @@ if (!(Test-Path $installDir)) {
 }
 
 # 2. Baixa o arquivo .bat do GitHub
-Write-Host "Baixando browser-files.bat..." -ForegroundColor Cyan
-Invoke-WebRequest -Uri $url -OutFile $batFile
+Write-Host "Baixando os arquivos do browser-files..." -ForegroundColor Cyan
+Invoke-WebRequest -Uri $urlMain -OutFile $batFile
+Invoke-WebRequest -Uri $urlUpdate -OutFile $updateFile
+Invoke-WebRequest -Uri $urlUninstall -OutFile $uninstallFile
 
 # 3. Adiciona ao PATH do Usuário (se já não estiver lá)
 $oldPath = [Environment]::GetEnvironmentVariable("Path", "User")
 if ($oldPath -notlike "*$installDir*") {
     Write-Host "Configurando variaveis de ambiente..." -ForegroundColor Yellow
     [Environment]::SetEnvironmentVariable("Path", "$oldPath;$installDir", "User")
-    Write-Host "Instalacao concluida! Digite: browser-files pelo terminal ou pelo Executar (Win+R)." -ForegroundColor Green
+    Write-Host "Instalacao concluida!" -ForegroundColor Green
+    Write-Host "Comandos disponiveis: browser-files, update, uninstall"
+    Write-Host " "
+    Write-Host "Voce pode utilizar os comandos atraves de uma instacia do CMD"
+    Write-Hoste "ou pressionando as teclas Windos + R e digitar: browser-files e apertar em ok"
     pause ; exit
 } else {
     Write-Host "browser-files já está configurado no seu PATH!" -ForegroundColor Green
