@@ -40,7 +40,7 @@ if "%opt%"=="3" (
 	if exist "!pasta!" (
 		cd "!pasta!"
 	) else (
-		color 0c && echo Pasta n o encontrada!
+		color 0c && echo Pasta não encontrada!
 		timeout /t 2 >nul
 	)
 	color 0f && goto inicio
