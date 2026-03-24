@@ -27,10 +27,10 @@ if ($oldPath -notlike "*$installDir*") {
     Write-Host "Configurando variaveis de ambiente..." -ForegroundColor Yellow
     [Environment]::SetEnvironmentVariable("Path", "$oldPath;$installDir", "User")
     Write-Host "Instalacao concluida!" -ForegroundColor Green
-    Write-Host "Comandos disponiveis: browser-files, update, uninstall"
-    Write-Host " "
+    Write-Host "Comandos disponiveis: browser-files, update, uninstall" -ForegroundColor Green
+    Write-Host " "
     Write-Host "Voce pode utilizar os comandos atraves de uma instacia do CMD"
-    Write-Hoste "ou pressionando as teclas Windos + R e digitar: browser-files e apertar em ok"
+    Write-Host "ou pressionando as teclas Windos + R e digitar: browser-files e apertar em ok"
     pause ; exit
 } else {
     Write-Host "browser-files já está configurado no seu PATH!" -ForegroundColor Green
