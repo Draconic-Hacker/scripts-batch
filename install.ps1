@@ -1,12 +1,12 @@
 # Define o local de instalação (Ex: C:\Users\SeuUsuario\browser-files)
 $installDir = Join-Path $HOME "browser-files"
 
-$batFile = Join-Path $installDir "browser-files.bat"
+$batFile = Join-Path $installDir "navegador.bat"
 $updateFile = Join-Path $installDir "update.ps1"
 $uninstallFile = Join-Path $installDir "uninstall.ps1"
 
 
-$urlMain = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/browser-files.bat"
+$urlMain = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/navegador.bat"
 $urlUpdate = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/update.ps1"
 $urlUninstall = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/uninstall.ps1"
 
@@ -27,10 +27,10 @@ if ($oldPath -notlike "*$installDir*") {
     Write-Host "Configurando variaveis de ambiente..." -ForegroundColor Yellow
     [Environment]::SetEnvironmentVariable("Path", "$oldPath;$installDir", "User")
     Write-Host "Instalacao concluida!" -ForegroundColor Green
-    Write-Host "Comandos disponiveis: browser-files, update, uninstall" -ForegroundColor Green
+    Write-Host "Comandos disponiveis: navegador, update, uninstall" -ForegroundColor Green
     Write-Host " "
     Write-Host "Voce pode utilizar os comandos atraves de uma instacia do CMD"
-    Write-Host "ou pressionando as teclas Windos + R e digitar: browser-files e apertar em ok"
+    Write-Host "ou pressionando as teclas Windos + R e digitar: navegador e apertar em ok"
     pause ; exit
 } else {
     Write-Host "browser-files já está configurado no seu PATH!" -ForegroundColor Green
