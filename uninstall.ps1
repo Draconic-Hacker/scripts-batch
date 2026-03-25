@@ -11,4 +11,6 @@ if (Test-Path $installDir) {
     Remove-Item -Path $installDir -Recurse -Force
 }
 
-Write-Host "browser-files foi removido com sucesso." -ForegroundColor Yellow ; pause ; exit
+Write-Host "browser-files foi removido com sucesso." -ForegroundColor Green
+Write-Host "`nPressione Enter para fechar." -Foreground Yellow
+Read-Host | Out-Null ; exit
