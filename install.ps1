@@ -15,28 +15,30 @@ if (!(Test-Path $installDir)) {
     New-Item -ItemType Directory -Path $installDir -Force | Out-Null
 }
 
-# 2. Baixa o arquivo .bat do GitHub
+# 2. Baixa os arquivos com a codificação correta para o CMD
 Write-Host "Baixando os arquivos do browser-files..." -ForegroundColor Cyan
-Invoke-WebRequest -Uri $urlMain -OutFile $batFile
+
+# Baixa o conteúdo e salva em ASCII para evitar o erro de 'comando não reconhecido'
+$navegadorContent = Invoke-WebRequest -Uri $urlMain -UseBasicParsing
+[System.IO.File]::WriteAllText($batFile, $navegadorContent.Content, [System.Text.Encoding]::ASCII)
+
+# Os scripts .ps1 podem ser baixados normalmente
 Invoke-WebRequest -Uri $urlUpdate -OutFile $updateFile
 Invoke-WebRequest -Uri $urlUninstall -OutFile $uninstallFile
 
-3. Adiciona ao PATH do Usuário (se já não estiver lá)
+# 3. Adiciona ao PATH do Usuário (se já não estiver lá)
 $oldPath = [Environment]::GetEnvironmentVariable("Path", "User")
 if ($oldPath -notlike "*$installDir*") {
     Write-Host "Configurando variaveis de ambiente..." -ForegroundColor Yellow
     [Environment]::SetEnvironmentVariable("Path", "$oldPath;$installDir", "User")
-    Write-Host "Instalacao concluida!" -ForegroundColor Green
-    Write-Host "Comandos disponiveis: navegador, uninstall" -ForegroundColor Green
-    Write-Host " "
-    Write-Host "Voce pode utilizar os comandos atraves de uma instacia do CMD" -ForegroundColor cyan
-    Write-Host "ou pressionando as teclas Windos + R e digitar: navegador e apertar em ok" -ForegroundColor cyan
-    Write-Host " "
-    Write-Host "pressione Enter para inicalizar o script: Navegador" -foreground green ; read-host | out-null
-    navegador
-} else {
-    Write-Host "browser-files já está configurado no seu PATH!" -ForegroundColor Green
-    Write-Host " "
-    write-host "pressione Enter para fechar" ; read-host | out-null
-    exit
 }
+
+Write-Host "`nInstalacao concluida!" -ForegroundColor Green
+Write-Host "Comandos disponiveis: navegador, uninstall" -ForegroundColor Green
+Write-Host "`nVoce pode utilizar os comandos atraves do CMD ou Win + R" -ForegroundColor Cyan
+
+Write-Host "`nPressione Enter para inicializar o Navegador..." -ForegroundColor Green
+Read-Host | Out-Null
+
+# Chama o script pelo caminho completo, pois o PATH novo ainda não carregou nesta sessão
+& $batFile
