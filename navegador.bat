@@ -70,7 +70,7 @@ if "%opt%"=="5" (
 if %opt%==6 powershell -ExecutionPolicy Bypass -File "$HOME\browser-files\update.ps1"
 
 if "%opt%"=="7" (
-    start powershell -ExecutionPolicy Bypass -File "%USERPROFILE%\browser-files\uninstall.ps1"
+    start powershell -ExecutionPolicy Bypass -Command "uninstall"
     exit
 )
 
