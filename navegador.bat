@@ -61,7 +61,7 @@ if %opt%==6 (
 	cls
 	echo ainda desenvolvendo essa funcionalidade
 	echo pressione qualquer tecla para voltar ao menu
-	pause >null
+	pause >nul
 	goto inicio
 )
 
@@ -70,7 +70,7 @@ if %opt%==7 (
 	cls
 	echo ainda desenvolvendo essa funcionalidade
 	echo pressione qualquer tecla para voltar ao menu
-	pause >null
+	pause >nul
 	goto inicio
 )
 
