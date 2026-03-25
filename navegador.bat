@@ -67,7 +67,11 @@ if "%opt%"=="5" (
 	exit
 )
 
-if %opt%==6 powershell -ExecutionPolicy Bypass -File "$HOME\browser-files\update.ps1"
+if %opt%==6 (
+    cd /d %TEMP%
+    start powershell -ExecutionPolicy Bypass -Command "update"
+	exit
+)
 
 if "%opt%"=="7" (
     cd /d %TEMP%
