@@ -1,7 +1,12 @@
+:: esconde o scopo dos comandos
 @echo off
+
 :: garante suporte a acentos
 @chcp 65001 >nul
+
+:: altera o título da janela
 title Meu Gerenciador
+
 setlocal enabledelayedexpansion
 cls
 
@@ -25,26 +30,32 @@ echo.
 set /p opt="Escolha uma opção: "
 
 if "%opt%"=="1" (
+	echo.
+	echo.
 	dir /w
+	echo.
 	pause
 	goto inicio
 )
 
 if "%opt%"=="2" (
-tree /f | more
-pause
-goto inicio
+	echo.
+	tree /f | more
+	echo.
+	pause
+	goto inicio
 )
 
 if "%opt%"=="3" (
+	echo.
 	set /p pasta="Digite o nome da pasta para entrar: "
 	if exist "!pasta!" (
 		cd "!pasta!"
 	) else (
-		color 0c && echo Pasta não encontrada!
+		color 0c & echo Pasta não encontrada!
 		timeout /t 2 >nul
 	)
-	color 0f && goto inicio
+	color 0f & goto inicio
 )
 
 if "%opt%"=="4" (
@@ -56,23 +67,9 @@ if "%opt%"=="5" (
 	exit
 )
 
-if %opt%==6 ( 
-	color 0a
-	cls
-	echo ainda desenvolvendo essa funcionalidade
-	echo pressione qualquer tecla para voltar ao menu
-	pause >nul
-	goto inicio
-)
+if %opt%==6 powershell -ExecutionPolicy Bypass -File "$HOME\browser-files\update.ps1"
+if %opt%==7 powershell -ExecutionPolicy Bypass -File "$HOME\browser-files\uninstall.ps1"
 
-if %opt%==7 (
-	color 0a
-	cls
-	echo ainda desenvolvendo essa funcionalidade
-	echo pressione qualquer tecla para voltar ao menu
-	pause >nul
-	goto inicio
-)
 
 echo Opção inválida!
 timeout /t 2 >nul
