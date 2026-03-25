@@ -20,9 +20,7 @@ Write-Host "Baixando os arquivos do browser-files..." -ForegroundColor Cyan
 
 # Baixa o conteúdo e salva em ASCII para evitar o erro de 'comando não reconhecido'
 $navegadorContent = Invoke-WebRequest -Uri $urlMain -UseBasicParsing
-[System.IO.File]::WriteAllText($batFile, $navegadorContent.Content, [System.Text.Encoding]::utf8NoBOM)
-
-
+[System.IO.File]::WriteAllText($batFile, $navegadorContent.Content, [System.Text.Encoding]::ASCII)
 
 # Os scripts .ps1 podem ser baixados normalmente
 Invoke-WebRequest -Uri $urlUpdate -OutFile $updateFile
