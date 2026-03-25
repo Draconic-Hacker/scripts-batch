@@ -7,6 +7,9 @@
 :: altera o título da janela
 title Meu Gerenciador
 
+:: mira o cmd para a pasta padrão do sistema
+cd %userprofile%
+
 setlocal enabledelayedexpansion
 cls
 
