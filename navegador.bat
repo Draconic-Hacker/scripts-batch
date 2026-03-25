@@ -11,7 +11,7 @@ setlocal enabledelayedexpansion
 cls
 
 :inicio
-color
+color 0f
 cls
 echo ==============================================
 echo     NAVEGADOR DE PASTAS - MODO TERMINAL
@@ -55,7 +55,7 @@ if "%opt%"=="3" (
 		color 0c & echo Pasta nao encontrada!
 		timeout /t 2 >nul
 	)
-	color 0f & goto inicio
+	goto inicio
 )
 
 if "%opt%"=="4" (
@@ -68,9 +68,15 @@ if "%opt%"=="5" (
 )
 
 if %opt%==6 (
-    cd /d %TEMP%
-    start powershell -ExecutionPolicy Bypass -Command "update"
-	exit
+	color 0e
+	echo.
+	echo Funcionalidade ainda em desenvolvimento
+	echo.
+	timeout /t 3 >nul
+	goto inicio
+    :: cd /d %TEMP%
+    :: start powershell -ExecutionPolicy Bypass -Command "update"
+	:: exit
 )
 
 if "%opt%"=="7" (
