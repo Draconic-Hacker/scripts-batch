@@ -20,7 +20,11 @@ Write-Host "Baixando os arquivos do browser-files..." -ForegroundColor Cyan
 
 # Baixa o conteúdo e salva em ASCII para evitar o erro de 'comando não reconhecido'
 $navegadorContent = Invoke-WebRequest -Uri $urlMain -UseBasicParsing
-[System.IO.File]::WriteAllText($batFile, $navegadorContent.Content, [System.Text.Encoding]::ASCII)
+# Criamos um objeto UTF8 que explicitamente não usa BOM ($false)
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($batFile, $navegadorContent.Content, $utf8NoBom)
+
+
 
 # Os scripts .ps1 podem ser baixados normalmente
 Invoke-WebRequest -Uri $urlUpdate -OutFile $updateFile
