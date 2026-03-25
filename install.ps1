@@ -20,7 +20,7 @@ Write-Host "Baixando os arquivos do browser-files..." -ForegroundColor Cyan
 
 # Baixa o conteúdo e salva em ASCII para evitar o erro de 'comando não reconhecido'
 $navegadorContent = Invoke-WebRequest -Uri $urlMain -UseBasicParsing
-[System.IO.File]::WriteAllText($batFile, $navegadorContent.Content, [System.Text.Encoding]::$utf8NoBom)
+[System.IO.File]::WriteAllText($batFile, $navegadorContent.Content, [System.Text.Encoding]::UTF8NoBOM)
 
 
 
