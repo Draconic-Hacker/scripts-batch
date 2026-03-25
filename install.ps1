@@ -42,6 +42,5 @@ Read-Host | Out-Null
 
 # Chama o script pelo caminho completo, pois o PATH novo ainda não carregou nesta sessão
 # & $batFile
-# Start-Process cmd -ArgumentList "/k cd $env:USERPROFILE\browser-files & navegador.bat"
-Start-Process cmd -ArgumentList "/k navegador.bat"
+Start-Process cmd -ArgumentList "/k cd $env:USERPROFILE\browser-files & navegador.bat"
 exit
