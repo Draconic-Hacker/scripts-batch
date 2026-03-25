@@ -43,3 +43,4 @@ Read-Host | Out-Null
 # Chama o script pelo caminho completo, pois o PATH novo ainda não carregou nesta sessão
 # & $batFile
 Start-Process cmd -ArgumentList '/k navegador'
+exit
