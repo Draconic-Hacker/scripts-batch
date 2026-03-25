@@ -67,6 +67,10 @@ if "%opt%"=="5" (
 	exit
 )
 
+:: cd /d %TEMP%
+:: start powershell -ExecutionPolicy Bypass -Command "update"
+:: exit
+
 if %opt%==6 (
 	color 0e
 	echo.
@@ -74,9 +78,6 @@ if %opt%==6 (
 	echo.
 	timeout /t 3 >nul
 	goto inicio
-    :: cd /d %TEMP%
-    :: start powershell -ExecutionPolicy Bypass -Command "update"
-	:: exit
 )
 
 if "%opt%"=="7" (
