@@ -41,4 +41,5 @@ Write-Host "`nPressione Enter para inicializar o Navegador..." -ForegroundColor 
 Read-Host | Out-Null
 
 # Chama o script pelo caminho completo, pois o PATH novo ainda não carregou nesta sessão
-& $batFile
+# & $batFile
+Start-Process cmd -ArgumentList '/k navegador'
