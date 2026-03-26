@@ -2,12 +2,12 @@
 $installDir = Join-Path $HOME "browser-files"
 
 $batFile = Join-Path $installDir "navegador.bat"
-# $updateFile = Join-Path $installDir "update.ps1"
+$updateFile = Join-Path $installDir "update.ps1"
 $uninstallFile = Join-Path $installDir "uninstall.ps1"
 
 
 $urlMain = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/navegador.bat"
-# $urlUpdate = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/update.ps1"
+$urlUpdate = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/update.ps1"
 $urlUninstall = "https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/uninstall.ps1"
 
 # 1. Cria a pasta se não existir
@@ -23,7 +23,7 @@ $navegadorContent = Invoke-WebRequest -Uri $urlMain -UseBasicParsing
 [System.IO.File]::WriteAllText($batFile, $navegadorContent.Content, [System.Text.Encoding]::ASCII)
 
 # Os scripts .ps1 podem ser baixados normalmente
-# Invoke-WebRequest -Uri $urlUpdate -OutFile $updateFile
+Invoke-WebRequest -Uri $urlUpdate -OutFile $updateFile
 Invoke-WebRequest -Uri $urlUninstall -OutFile $uninstallFile
 
 # 3. Adiciona ao PATH do Usuário (se já não estiver lá)
