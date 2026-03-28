@@ -1,3 +1,9 @@
+# muda de pasta para executar o script
+cd $env:TEMP
+
+# fecha a janela do navegador.bat aberta para evitar erro de conflito
+taskkill /fi "windowtitle eq Meu Gerenciador" /f
+
 # uninstall.ps1
 $installDir = Join-Path $HOME "browser-files"
 
@@ -13,4 +19,5 @@ if (Test-Path $installDir) {
 
 Write-Host "browser-files foi removido com sucesso." -ForegroundColor Green
 Write-Host "`nPressione Enter para fechar." -Foreground Yellow
-Read-Host | Out-Null ; exit
+Read-Host | Out-Null
+exit
