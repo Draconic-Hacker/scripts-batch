@@ -7,7 +7,7 @@
 set "current_version=1.0 instable"
 
 :: Busca a versão remota do GitHub
-for /f "delims=" %%a in ('curl -s https://raw.githubusercontent.com') do set "latest_version=%%a"
+for /f "delims=" %%a in ('curl -s https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/version.txt') do set "latest_version=%%a"
 
 :: altera o título da janela
 title Meu Gerenciador
@@ -33,13 +33,13 @@ echo ----------------------------------------------
 :: Verifica se a versão do GitHub é diferente da atual
 if "%latest_version%" NEQ "%current_version%" (
     echo.
-    echo [!] NOVA VERSÃO DISPONÍVEL: %latest_version%
+    echo [!] NOVA VERSAO DISPONIVEL: %latest_version%
     echo [!] Use a opção [6] para atualizar agora.
     echo ==============================================
 )
 echo.
 echo [1] Listar arquivos      [5] Fechar o script
-echo [2] Ver árvore (Tree)    [6] ATUALIZAR SCRIPT
+echo [2] Ver arvore (Tree)    [6] ATUALIZAR SCRIPT
 echo [3] Entrar em pasta      [7] Desinstalar
 echo [4] Voltar (CD ..)
 echo.
@@ -84,28 +84,15 @@ if "%opt%"=="4" (
 	goto inicio
 )
 
-if "%opt%"=="5" (
-	echo.
-	cls
-	echo Tem certeza que deseja fechar o script?
-	echo [s] sim | [n] nao
-	echo.
-	set /p optExit=": "
-
-	if "%optExit%"=="s"(
-		exit
-	) esle (
-		goto inicio
-		)
-)
+if "%opt%"=="5" exit
 
 if "%opt%"=="6" (
     cls
+	cd /d %TEMP%
     echo [!] Iniciando atualização...
     :: Chama o PowerShell de atualização que você já tem
     start powershell -ExecutionPolicy Bypass -File "update"
-    pause
-    goto inicio
+	exit
 )
 
 if "%opt%"=="7" (
