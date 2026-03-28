@@ -88,17 +88,16 @@ if "%opt%"=="5" exit
 
 if "%opt%"=="6" (
     cls
-	cd /d %TEMP%
-    echo [!] Iniciando atualização...
+    echo [!] Iniciando atualizacao...
+	timeout /t 3
     :: Chama o PowerShell de atualização que você já tem
     start powershell -ExecutionPolicy Bypass -File "update"
-	exit
 )
 
 if "%opt%"=="7" (
-    cd /d %TEMP%
+	echo [!] Iniciando a desinstalacao...
+	timeout /t 3
     start powershell -ExecutionPolicy Bypass -Command "uninstall"
-    exit
 )
 
 
