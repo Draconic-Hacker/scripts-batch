@@ -6,8 +6,19 @@
 
 set "current_version=1.0 instable"
 
-:: Busca a versão remota do GitHub
-for /f "delims=" %%a in ('curl -s https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/version.txt') do set "latest_version=%%a"
+:: Busca a versão remota
+for /f "delims=" %%a in ('curl -s https://raw.githubusercontent.com') do set "remote_v=%%a"
+
+:: Lógica de Filtro
+set "update_available=false"
+
+:: Verifica se a versão remota é diferente da atual E se contém "instable"
+echo %remote_v% | findstr /i "instable" >nul
+if %errorlevel% equ 0 (
+    if "%remote_v%" NEQ "%current_version%" (
+        set "update_available=true"
+    )
+)
 
 :: altera o título da janela
 title Meu Gerenciador
@@ -31,10 +42,10 @@ echo Diretorio atual: %cd%
 echo.
 echo ----------------------------------------------
 :: Verifica se a versão do GitHub é diferente da atual
-if "%latest_version%" NEQ "%current_version%" (
+if "%update_available%"=="true" (
     echo.
-    echo [!] NOVA VERSAO DISPONIVEL: %latest_version%
-    echo [!] Use a opção [6] para atualizar agora.
+    echo [!] NOVA VERSAO ESTAVEL: %remote_v%
+    echo [!] Escolha a opção 6 para atualizar.
     echo ==============================================
 )
 echo.
@@ -101,6 +112,6 @@ if "%opt%"=="7" (
 )
 
 
-echo Opção inválida!
+echo Opcao invalida!
 timeout /t 2 >nul
 goto inicio
