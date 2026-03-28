@@ -25,7 +25,7 @@ echo ==============================================
 echo     NAVEGADOR DE PASTAS - MODO TERMINAL
 echo ==============================================
 echo.
-echo Versão Atual: %current_version%
+echo Versao Atual: %current_version%
 echo.
 echo Diretorio atual: %cd%
 echo.
