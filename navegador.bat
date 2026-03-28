@@ -7,7 +7,7 @@
 set "current_version=1.0 instable"
 
 :: Busca a versão remota
-for /f "delims=" %%a in ('curl -s https://raw.githubusercontent.com') do set "remote_v=%%a"
+for /f "delims=" %%a in ('curl -s https://raw.githubusercontent.com/Draconic-Hacker/scripts-batch/refs/heads/master/version.txt') do set "remote_v=%%a"
 
 :: Lógica de Filtro
 set "update_available=false"
