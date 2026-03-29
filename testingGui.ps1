@@ -10,17 +10,17 @@ $webView = New-Object Microsoft.Web.WebView2.WinForms.WebView2
 # 3. Carrega as bibliotecas necessÃ¡rias
 Add-Type -AssemblyName System.Drawing
 
-# 2. Cria a Janela Principal (o "container")
+# 4. Cria a Janela Principal (o "container")
 $form = New-Object System.Windows.Forms.Form
 $form.Text = "Meu Navegador Moderno"
 $form.Size = New-Object System.Drawing.Size(600, 400)
 $form.StartPosition = "CenterScreen"
 
-# 3. Cria o controle do WebView2
+# 5. Cria o controle do WebView2
 # Nota: O Windows 10/11 já costuma ter o Runtime do WebView2 instalado
 $webView.Dock = [System.Windows.Forms.DockStyle]::Fill
 
-# 4. O seu HTML e CSS (O "Visual")
+# 6. O seu HTML e CSS (O "Visual")
 $htmlContent = @"
 <!DOCTYPE html>
 <html>
@@ -49,7 +49,7 @@ $htmlContent = @"
 </html>
 "@
 
-# 5. Lógica de inicialização e comunicação
+# 7. Lógica de inicialização e comunicação
 $form.Add_Load({
     $webView.EnsureCoreWebView2Async($null)
 })
@@ -71,6 +71,6 @@ $webView.add_WebMessageReceived({
     }
 })
 
-# 6. Adiciona o navegador na janela e exibe
+# 8. Adiciona o navegador na janela e exibe
 $form.Controls.Add($webView)
 $form.ShowDialog()

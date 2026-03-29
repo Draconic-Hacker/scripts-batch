@@ -2,10 +2,10 @@
 cd $env:TEMP
 
 # fecha a janela do navegador.bat aberta para evitar erro de conflito
-taskkill /fi "windowtitle eq Meu Gerenciador" /f
+taskkill /fi "windowtitle eq Meu Gerenciador" /f >nul
 
 # uninstall.ps1
-$installDir = Join-Path $HOME "browser-files"
+$installDir = Join-Path $env:APPDATA "browser-files"
 
 # 1. Remove do PATH do Usuário
 $oldPath = [Environment]::GetEnvironmentVariable("Path", "User")
