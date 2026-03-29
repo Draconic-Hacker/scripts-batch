@@ -1,12 +1,13 @@
 # 1. Carrega a DLL de onde ela foi instalada
-$dllPath = Join-Path $HOME "browser-files\Microsoft.Web.WebView2.WinForms.dll"
+# LOCALIZA A DLL NA PASTA DE INSTALA«√O
+$dllPath = Join-Path $env:APPDATA "browser-files\Microsoft.Web.WebView2.WinForms.dll"
 Add-Type -Path $dllPath
 
 # 2. Agora sim o PowerShell entende o que √© o WebView2
 Add-Type -AssemblyName System.Windows.Forms
 $webView = New-Object Microsoft.Web.WebView2.WinForms.WebView2
 
-# 1. Carrega as bibliotecas necess√°rias
+# 3. Carrega as bibliotecas necess√°rias
 Add-Type -AssemblyName System.Drawing
 
 # 2. Cria a Janela Principal (o "container")
@@ -16,7 +17,7 @@ $form.Size = New-Object System.Drawing.Size(600, 400)
 $form.StartPosition = "CenterScreen"
 
 # 3. Cria o controle do WebView2
-# Nota: O Windows 10/11 j√° costuma ter o Runtime do WebView2 instalado
+# Nota: O Windows 10/11 j· costuma ter o Runtime do WebView2 instalado
 $webView.Dock = [System.Windows.Forms.DockStyle]::Fill
 
 # 4. O seu HTML e CSS (O "Visual")
@@ -35,7 +36,7 @@ $htmlContent = @"
 <body>
     <h1>Projeto Browser-Files</h1>
     <p>Interface moderna com HTML e CSS</p>
-    <button class="btn" onclick="window.chrome.webview.postMessage('listar')">Testar Comunica√ß√£o</button>
+    <button class="btn" onclick="window.chrome.webview.postMessage('listar')">Testar ComunicaÁ„o</button>
     <div id="status"></div>
 
     <script>
@@ -48,7 +49,7 @@ $htmlContent = @"
 </html>
 "@
 
-# 5. L√≥gica de inicializa√ß√£o e comunica√ß√£o
+# 5. LÛgica de inicializaÁ„o e comunicaÁ„o
 $form.Add_Load({
     $webView.EnsureCoreWebView2Async($null)
 })
@@ -58,7 +59,7 @@ $webView.add_CoreWebView2InitializationCompleted({
     $webView.CoreWebView2.NavigateToString($htmlContent)
 })
 
-# Evento: Receber clique do bot√£o HTML no PowerShell
+# Evento: Receber clique do bot„o HTML no PowerShell
 $webView.add_WebMessageReceived({
     param($sender, $args)
     $mensagem = $args.TryGetWebMessageAsString()
@@ -66,7 +67,7 @@ $webView.add_WebMessageReceived({
     if ($mensagem -eq "listar") {
         # O PowerShell processa algo e manda de volta para o HTML
         $data = Get-Date -Format "HH:mm:ss"
-        $webView.CoreWebView2.PostWebMessageAsString("Bot√£o clicado √†s $data ! O PowerShell respondeu.")
+        $webView.CoreWebView2.PostWebMessageAsString("Bot„o clicado ‡s $data ! O PowerShell respondeu.")
     }
 })
 
